@@ -6,7 +6,7 @@ const Projects: React.FC = () => {
       <div className="max-w-6xl mx-auto px-6">
         <h2 className="text-3xl font-bold text-center mb-10 dark:text-white">Projects</h2>
         <div className="space-y-4 text-gray-700 dark:text-gray-300">
-          <p><strong>Chronic Kidney Disease Detection</strong><br>Designed a CKD detection model using Random Forest Classifier in Python, identifying CKD from blood sample
+          <p><strong>Chronic Kidney Disease Detection</strong>Designed a CKD detection model using Random Forest Classifier in Python, identifying CKD from blood sample
 data</></p>
           <p><strong>Bank Loan System</strong> — HTML, CSS, JS | Oct 2023 - Nov 2023</p>
           <p><strong>Netflix Clone</strong> — HTML, CSS, JS | Aug 2023 - Sep 2023</p>
