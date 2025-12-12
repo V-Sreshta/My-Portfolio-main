@@ -1,64 +1,34 @@
-import React, { useEffect, useState } from "react";
+"use client";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import ThemeToggle from "./ThemeToggle";
 
-const Navbar: React.FC = () => {
-  const [darkMode, setDarkMode] = useState<boolean>(() => {
-    return localStorage.getItem("theme") === "dark";
-  });
+const navItems = ["Home", "About", "Education", "Projects", "Contact"];
 
-  // Toggle dark/light
-  const toggleTheme = () => {
-    const updatedTheme = !darkMode;
-    setDarkMode(updatedTheme);
-
-    if (updatedTheme) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  };
-
-  // Apply theme on page load
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, []);
-
+export default function Navbar() {
   return (
-    <nav className="w-full bg-white dark:bg-gray-900 shadow fixed top-0 left-0 z-50">
-      <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-
-        {/* LOGO */}
-        <h1 className="text-xl font-bold text-gray-900 dark:text-white">
-          VS
-        </h1>
-
-        {/* NAVIGATION LINKS + DARK MODE TOGGLE */}
-        <div className="flex items-center gap-6 text-gray-700 dark:text-gray-300">
-
-          <a href="#home" className="hover:text-blue-500">Home</a>
-          <a href="#about" className="hover:text-blue-500">About</a>
-          <a href="#education" className="hover:text-blue-500">Education</a>
-          <a href="#projects" className="hover:text-blue-500">Projects</a>
-          <a href="#contact" className="hover:text-blue-500">Contact</a>
-
-          {/* SINGLE DARK MODE BUTTON */}
-          <button
-            onClick={toggleTheme}
-            className="px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-black dark:text-white shadow transition"
-          >
-            {darkMode ? "Light Mode" : "Dark Mode"}
-          </button>
-
-        </div>
-
+    <motion.nav
+      initial={{ y: -40, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="fixed top-0 w-full backdrop-blur-lg bg-black/20 text-white z-50 shadow-md"
+    >
+      <div className="max-w-6xl mx-auto flex items-center justify-between py-4 px-6">
+        <h1 className="font-bold text-xl">VS</h1>
+        <ul className="flex gap-6">
+          {navItems.map((item) => (
+            <li key={item}>
+              <a
+                href={`#${item.toLowerCase()}`}
+                className="hover:text-blue-400 transition"
+              >
+                {item}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <ThemeToggle />
       </div>
-    </nav>
+    </motion.nav>
   );
-};
-
-export default Navbar;
+}

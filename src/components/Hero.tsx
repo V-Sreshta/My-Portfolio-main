@@ -1,44 +1,58 @@
-import React from "react";
+"use client";
+import { motion } from "framer-motion";
 
-const Hero: React.FC = () => {
+export default function Hero() {
   return (
     <section
       id="home"
-      className="pt-32 pb-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-500"
+      className="min-h-screen flex flex-col justify-center items-center text-center"
     >
-      <div className="max-w-6xl mx-auto px-6 flex flex-col items-center text-center">
+      <motion.img
+        src="/profile.jpg"
+        alt="Profile"
+        className="rounded-full w-40 h-40 object-cover border-4 border-blue-500"
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.6 }}
+      />
 
-        <img
-          src="/profile.jpg"
-          alt="Vadde Sreshta"
-          className="w-40 h-40 rounded-full shadow-lg mb-6 object-cover border-4 border-white dark:border-gray-700"
-        />
+      <motion.h1
+        className="text-4xl md:text-5xl font-bold mt-6"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3 }}
+      >
+        Vadde Sreshta
+      </motion.h1>
 
-        <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-3">
-          Vadde Sreshta
-        </h1>
+      <motion.p
+        className="text-lg text-gray-400 mt-2"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5 }}
+      >
+        Aspiring Software Developer | Cloud & Python Enthusiast
+      </motion.p>
 
-        <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
-          Aspiring Software Developer | Cloud & Python Enthusiast
-        </p>
-
-        <div className="flex gap-4">
-          <a href="#projects">
-            <button className="px-6 py-3 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700">
-              View Projects
-            </button>
-          </a>
-
-          <a href="#contact">
-            <button className="px-6 py-3 bg-gray-800 text-white rounded-lg shadow hover:bg-black">
-              Contact Me
-            </button>
-          </a>
-        </div>
-
-      </div>
+      <motion.div
+        className="mt-6 flex gap-4"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.7 }}
+      >
+        <a
+          href="#projects"
+          className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+        >
+          View Projects
+        </a>
+        <a
+          href="#contact"
+          className="px-6 py-3 border border-white rounded-lg hover:bg-white hover:text-black transition"
+        >
+          Contact Me
+        </a>
+      </motion.div>
     </section>
   );
-};
-
-export default Hero;
+}
