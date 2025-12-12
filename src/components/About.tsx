@@ -31,8 +31,8 @@ const About: React.FC = () => {
 
             {/* DOWNLOAD RESUME BUTTON */}
             <a
-              href="C:\Users\vadde\OneDrive\Desktop\My-Portfolio-main\public\Sreshta_s_CV (1).pdf"
-              download="Sreshta_s_CV(1).pdf"
+              href="/Sreshta_s_CV.pdf"
+              download="Vadde_Sreshta_Resume.pdf"
             >
               <button className="px-6 py-3 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition">
                 Download Resume
