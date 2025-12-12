@@ -1,26 +1,18 @@
-"use client";
-import { motion } from "framer-motion";
+import React from "react";
 
-export default function Contact() {
+const Contact: React.FC = () => {
   return (
-    <section id="contact" className="py-20 px-6">
-      <motion.h2
-        className="text-3xl font-bold text-center mb-10"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-      >
-        Contact Me
-      </motion.h2>
-
-      <motion.div
-        className="max-w-xl mx-auto text-center text-gray-300"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-      >
-        <p>Email: <span className="text-blue-400">sreshtavadde@gmail.com</span></p>
-        <p className="mt-2">GitHub: github.com/sreshtavadde</p>
-        <p className="mt-2">LinkedIn: linkedin.com/in/sreshta</p>
-      </motion.div>
+    <section id="contact" className="py-20 bg-white dark:bg-gray-900 dark:text-gray-200 transition-colors duration-500">
+      <div className="max-w-6xl mx-auto px-6">
+        <h2 className="text-3xl font-bold text-center mb-10 dark:text-white">Contact</h2>
+        <div className="text-gray-700 dark:text-gray-300 text-center">
+          <p>Email: vaddesreshta133@gmail.com</p>
+          <p>Phone: +91 7095429683</p>
+          <p>Location: Warangal, Telangana, India</p>
+        </div>
+      </div>
     </section>
   );
-}
+};
+
+export default Contact;
