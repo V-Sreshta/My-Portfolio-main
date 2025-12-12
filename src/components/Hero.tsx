@@ -1,41 +1,52 @@
-import React from "react";
+import { useState, useEffect } from "react";
 
-const Hero: React.FC = () => {
+const Hero = () => {
+  const [theme, setTheme] = useState<"light" | "dark">("dark");
+
+  // Update the body class whenever theme changes
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+      document.documentElement.classList.remove("light");
+    } else {
+      document.documentElement.classList.add("light");
+      document.documentElement.classList.remove("dark");
+    }
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
   return (
-    <section
-      id="home"
-      className="pt-32 pb-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-500"
-    >
-      <div className="max-w-6xl mx-auto px-6 flex flex-col items-center text-center">
+    <section className="min-h-screen flex flex-col items-center justify-center transition-colors duration-500 bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+      <nav className="w-full flex justify-end p-4">
+        <button
+          onClick={toggleTheme}
+          className="px-4 py-2 rounded-md bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white"
+        >
+          {theme === "dark" ? "Light Mode" : "Dark Mode"}
+        </button>
+      </nav>
 
+      <div className="flex flex-col items-center mt-10">
         <img
           src="/profile.jpg"
           alt="Vadde Sreshta"
-          className="w-40 h-40 rounded-full shadow-lg mb-6 object-cover border-4 border-white dark:border-gray-700"
+          className="w-32 h-32 rounded-full border-4 border-gray-700 dark:border-gray-300"
         />
-
-        <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-3">
-          Vadde Sreshta
-        </h1>
-
-        <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
+        <h1 className="text-4xl font-bold mt-4">Vadde Sreshta</h1>
+        <p className="mt-2 text-lg">
           Aspiring Software Developer | Cloud & Python Enthusiast
         </p>
-
-        <div className="flex gap-4">
-          <a href="#projects">
-            <button className="px-6 py-3 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700">
-              View Projects
-            </button>
-          </a>
-
-          <a href="#contact">
-            <button className="px-6 py-3 bg-gray-800 text-white rounded-lg shadow hover:bg-black">
-              Contact Me
-            </button>
-          </a>
+        <div className="mt-4 flex gap-4">
+          <button className="px-6 py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition">
+            View Projects
+          </button>
+          <button className="px-6 py-2 rounded bg-gray-800 dark:bg-gray-300 text-white dark:text-gray-800 hover:bg-gray-900 dark:hover:bg-gray-400 transition">
+            Contact Me
+          </button>
         </div>
-
       </div>
     </section>
   );
